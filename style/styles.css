@@ -1,3 +1,5 @@
+@import url(../style/variables.css);
+
 body {
     font-family: Arial, sans-serif;
     text-align: center;
@@ -55,13 +57,13 @@ body {
     position: absolute;
     top: 8px;
     right: 10px;
-    background-color: var(--color-15);
+    background-color: var(--color-5);
     color: var(--color-4);
     border: none;
     font-weight: bold;
     border-radius: 50%;
-    width: 24px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
     cursor: pointer;
     line-height: 1;
   }

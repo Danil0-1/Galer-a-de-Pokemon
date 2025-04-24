@@ -6,8 +6,8 @@ addImageBtn.addEventListener("click", () => {
   const name = document.getElementById("imageName").value;
 
   if (!url || !name) {
-    alert("Por favor ingresa tanto la URL como el nombre de la imagen.")
-    return
+    alert("Por favor ingresa tanto la URL como el nombre de la imagen.");
+    return;
   }
 
   const cardHTML = `
@@ -16,35 +16,39 @@ addImageBtn.addEventListener("click", () => {
       <img src="${url}" alt="${name}" />
       <h4>${name}</h4>
     </div>
-  `
+  `;
 
-  gallery.insertAdjacentHTML("beforeend", cardHTML)
+  gallery.insertAdjacentHTML("beforeend", cardHTML);
 
-  document.getElementById("imageUrl").value = ""
-  document.getElementById("imageName").value = ""
-})
+  // limpiar inputs
+  document.getElementById("imageUrl").value = "";
+  document.getElementById("imageName").value = "";
+});
 
+// Delegación de eventos para tarjetas agregadas dinámicamente
 gallery.addEventListener("click", (e) => {
   const target = e.target;
 
+  // Eliminar tarjeta
   if (target.classList.contains("delete-btn")) {
     const card = target.closest(".card");
     card.remove();
   }
 
+  // Reemplazar imagen al hacer clic
   if (target.tagName === "IMG") {
-    const newUrl = prompt("Ingresa la nueva URL de la imagen:")
+    const newUrl = prompt("Ingresa la nueva URL de la imagen:");
     if (newUrl) {
-      const newImg = document.createElement("img")
+      const newImg = document.createElement("img");
       newImg.src = newUrl;
       newImg.alt = target.alt;
-      newImg.style.cursor = "pointer"
+      newImg.style.cursor = "pointer";
 
       // reemplazar imagen
       target.parentElement.replaceChild(newImg, target);
     }
   }
-})
+});
 
 gallery.addEventListener("mouseenter", (e) => {
   if (e.target.classList.contains("card")) {
@@ -57,9 +61,9 @@ gallery.addEventListener("mouseenter", (e) => {
         duration: 300,
         fill: "forwards"
       }
-    )
+    );
   }
-}, true)
+}, true);
 
 gallery.addEventListener("mouseleave", (e) => {
   if (e.target.classList.contains("card")) {
@@ -72,6 +76,6 @@ gallery.addEventListener("mouseleave", (e) => {
         duration: 300,
         fill: "forwards"
       }
-    )
+    );
   }
-}, true)
+}, true);
